@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #0a0a0a;
+  --paper: #ffffff;
+}
+
+.dark {
+  --ink: #fafafa;
+  --paper: #0a0a0a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply antialiased font-sans;
+  font-feature-settings: "kern" 1, "liga" 1;
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+.dark body {
+  background-color: #0a0a0a;
+  color: #fafafa;
+}
+
+/* Editorial uppercase nav/titles */
+.nav-link,
+.editorial {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* Selection */
+::selection {
+  @apply bg-ink/20 dark:bg-white/20;
+}
+
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-ink dark:outline-white;
+}
+
+/* Glass / borders for light/dark */
+.glass-light {
+  @apply bg-white/80 dark:bg-black/40 border border-ink/10 dark:border-white/10;
+}
