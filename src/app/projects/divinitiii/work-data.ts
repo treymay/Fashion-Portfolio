@@ -62,10 +62,6 @@ export const divinitiiiWorks: DivinitiiiWork[] = [
     ],
     assets: [
       {
-        label: "Haloed Wraith Exo (.3dm)",
-        href: "/projects/divinitiii/works/01-haloed-wraith/docs/haloed-wraith-exo-black.3dm",
-      },
-      {
         label: "Chassis Agilus Black (.stl)",
         href: "/projects/divinitiii/works/01-haloed-wraith/docs/chassis-agilus-black-black.stl",
       },
@@ -135,10 +131,6 @@ export const divinitiiiWorks: DivinitiiiWork[] = [
     ],
     assets: [
       {
-        label: "Necklace (.3dm)",
-        href: "/projects/divinitiii/works/03-thorned-gorget/docs/necklace.3dm",
-      },
-      {
         label: "Top Part with Jewels (.3mf)",
         href: "/projects/divinitiii/works/03-thorned-gorget/docs/top-part-with-jewels.3mf",
       },
@@ -179,10 +171,6 @@ export const divinitiiiWorks: DivinitiiiWork[] = [
       "/projects/divinitiii/works/04-dark-wing-choker/media/angle-3.png",
     ],
     assets: [
-      {
-        label: "Flo State Choker (.3dm)",
-        href: "/projects/divinitiii/works/04-dark-wing-choker/docs/flo-state-choker.3dm",
-      },
       {
         label: "Flo State Choker (.stl)",
         href: "/projects/divinitiii/works/04-dark-wing-choker/docs/flo-state-choker.stl",
