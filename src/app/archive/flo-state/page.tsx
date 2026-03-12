@@ -22,7 +22,7 @@ const projectImages = [
   { src: "/projects/flo-state/styling-12.png", alt: "Flo State styling still 12" },
 ];
 
-export default function FloStateFilmPage() {
+export default function FloStateArchivePage() {
   const [selectedImage, setSelectedImage] = useState<{
     src: string;
     alt: string;
@@ -50,7 +50,7 @@ export default function FloStateFilmPage() {
       <div className="px-6 md:px-12 lg:px-20 max-w-6xl mx-auto">
         <ScrollReveal>
           <p className="nav-link text-xs text-ink/60 dark:text-white/60">
-            Projects / Film
+            Archive / Film
           </p>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-ink dark:text-white mt-3">
             Flo State (Film)
@@ -77,7 +77,7 @@ export default function FloStateFilmPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent dark:from-black/55" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
-                  <p className="nav-link text-xs text-white/80">Feature Project</p>
+                  <p className="nav-link text-xs text-white/80">Archived Project</p>
                   <h2 className="font-display text-2xl md:text-3xl mt-2">Flo State (Film)</h2>
                 </div>
               </div>

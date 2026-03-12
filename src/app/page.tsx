@@ -50,7 +50,7 @@ export default function HomePage() {
               </span>
             </p>
             <Link
-              href="/projects"
+              href="/collections"
               className="nav-link text-xs font-medium tracking-widest px-6 py-3 border border-white/50 text-white hover:bg-white hover:text-ink transition-colors"
             >
               EXPLORE
@@ -88,7 +88,7 @@ export default function HomePage() {
         </ScrollReveal>
         <ScrollReveal delay={0.25} className="md:col-span-7 md:col-start-7">
           <p className="font-sans text-ink/85 dark:text-white/85 text-base md:text-lg leading-relaxed max-w-2xl">
-            Trey is currently pursuing a fashion design BFA at the Savannah College of Art and Design with a tentative graduation date of Spring 2028. His minor in fashion photography is proof that his skill set isn&apos;t limited to design. When he does design, he puts an emphasis on craftsmanship and detail. His passion for world-building is the engine for his creativity while his avant-garde perspective takes the wheel. Although he likes to push the envelope, his ultimate goal is to make wearable clothing that is innovative and next-level. His technical abilities such as CLO3D and the Adobe Creative Suite give him an advantage while traditional techniques are still applied and designed to keep him grounded. Although Trey is currently strictly focused on his studies, he is open to collaboration and will pursue professional opportunities in the future.
+            Trey is currently pursuing a fashion design BFA at the Savannah College of Art and Design with a tentative graduation date of Spring 2029. His love for exploration of different disciplines is proof that his skill set isn&apos;t limited to designing garments. When he does design, he puts an emphasis on craftsmanship and detail. His passion for world-building is the engine for his creativity while his avant-garde perspective takes the wheel. Although he likes to push the envelope, his ultimate goal is to make wearable clothing that is innovative and next-level. His technical abilities such as CLO3D and the Adobe Creative Suite give him an advantage while traditional techniques are still applied and designed to keep him grounded. Although Trey is currently strictly focused on his studies, he is open to collaboration and will pursue professional opportunities in the future.
           </p>
           <p className="font-sans text-ink/60 dark:text-white/60 mt-6 text-sm nav-link">
             Trey May
@@ -104,7 +104,7 @@ export default function HomePage() {
               New work arriving soon.
             </p>
             <Link
-              href="/projects"
+              href="/archive"
               className="nav-link text-xs font-medium text-ink dark:text-white hover:opacity-70 transition-opacity"
             >
               Explore sections →
@@ -121,14 +121,14 @@ export default function HomePage() {
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.2} className="mt-16 flex flex-wrap gap-8">
-          <Link href="/photography" className="nav-link text-xs text-ink/70 dark:text-white/70 hover:text-ink dark:hover:text-white transition-colors">
-            Photography
+          <Link href="/collections" className="nav-link text-xs text-ink/70 dark:text-white/70 hover:text-ink dark:hover:text-white transition-colors">
+            Collections
           </Link>
-          <Link href="/lookbooks" className="nav-link text-xs text-ink/70 dark:text-white/70 hover:text-ink dark:hover:text-white transition-colors">
-            Lookbooks
+          <Link href="/accessories" className="nav-link text-xs text-ink/70 dark:text-white/70 hover:text-ink dark:hover:text-white transition-colors">
+            Accessories
           </Link>
-          <Link href="/clo3d" className="nav-link text-xs text-ink/70 dark:text-white/70 hover:text-ink dark:hover:text-white transition-colors">
-            CLO3D
+          <Link href="/archive" className="nav-link text-xs text-ink/70 dark:text-white/70 hover:text-ink dark:hover:text-white transition-colors">
+            Archive
           </Link>
           <Link href="/contact" className="nav-link text-xs text-ink/70 dark:text-white/70 hover:text-ink dark:hover:text-white transition-colors">
             Contact
