@@ -31,7 +31,7 @@ export default function ArchivePage() {
                 <div className="grid grid-cols-1 lg:grid-cols-12">
                   <div className="relative aspect-[16/10] lg:aspect-auto lg:h-full lg:col-span-7">
                     <Image
-                      src="/projects/flo-state/thumbnail.jpg"
+                      src="/media/flo-state/thumbnail.jpg"
                       alt="Flo State film thumbnail"
                       fill
                       sizes="(max-width: 1024px) 100vw, 58vw"

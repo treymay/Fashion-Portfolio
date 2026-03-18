@@ -6,20 +6,20 @@ import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 const projectImages = [
-  { src: "/projects/flo-state/styling-00a.png", alt: "Flo State styling portrait 1" },
-  { src: "/projects/flo-state/styling-00b.png", alt: "Flo State styling portrait 2" },
-  { src: "/projects/flo-state/styling-01.png", alt: "Flo State styling still 1" },
-  { src: "/projects/flo-state/styling-02.png", alt: "Flo State styling still 2" },
-  { src: "/projects/flo-state/styling-03.png", alt: "Flo State styling still 3" },
-  { src: "/projects/flo-state/styling-04.jpg", alt: "Flo State styling still 4" },
-  { src: "/projects/flo-state/styling-05.jpg", alt: "Flo State styling still 5" },
-  { src: "/projects/flo-state/styling-06.jpg", alt: "Flo State styling still 6" },
-  { src: "/projects/flo-state/styling-07.png", alt: "Flo State styling still 7" },
-  { src: "/projects/flo-state/styling-08.png", alt: "Flo State styling still 8" },
-  { src: "/projects/flo-state/styling-09.png", alt: "Flo State styling still 9" },
-  { src: "/projects/flo-state/styling-10.png", alt: "Flo State styling still 10" },
-  { src: "/projects/flo-state/styling-11.png", alt: "Flo State styling still 11" },
-  { src: "/projects/flo-state/styling-12.png", alt: "Flo State styling still 12" },
+  { src: "/media/flo-state/styling-00a.png", alt: "Flo State styling portrait 1" },
+  { src: "/media/flo-state/styling-00b.png", alt: "Flo State styling portrait 2" },
+  { src: "/media/flo-state/styling-01.png", alt: "Flo State styling still 1" },
+  { src: "/media/flo-state/styling-02.png", alt: "Flo State styling still 2" },
+  { src: "/media/flo-state/styling-03.png", alt: "Flo State styling still 3" },
+  { src: "/media/flo-state/styling-04.jpg", alt: "Flo State styling still 4" },
+  { src: "/media/flo-state/styling-05.jpg", alt: "Flo State styling still 5" },
+  { src: "/media/flo-state/styling-06.jpg", alt: "Flo State styling still 6" },
+  { src: "/media/flo-state/styling-07.png", alt: "Flo State styling still 7" },
+  { src: "/media/flo-state/styling-08.png", alt: "Flo State styling still 8" },
+  { src: "/media/flo-state/styling-09.png", alt: "Flo State styling still 9" },
+  { src: "/media/flo-state/styling-10.png", alt: "Flo State styling still 10" },
+  { src: "/media/flo-state/styling-11.png", alt: "Flo State styling still 11" },
+  { src: "/media/flo-state/styling-12.png", alt: "Flo State styling still 12" },
 ];
 
 export default function FloStateArchivePage() {
@@ -68,7 +68,7 @@ export default function FloStateArchivePage() {
             >
               <div className="relative aspect-[5/4]">
                 <Image
-                  src="/projects/flo-state/thumbnail.jpg"
+                  src="/media/flo-state/thumbnail.jpg"
                   alt="Flo State film thumbnail"
                   fill
                   priority
@@ -97,12 +97,12 @@ export default function FloStateArchivePage() {
               <div>
                 <p className="nav-link text-xs text-ink/55 dark:text-white/55">Share Link Photo</p>
                 <a
-                  href="/projects/flo-state/thumbnail.jpg"
+                  href="/media/flo-state/thumbnail.jpg"
                   target="_blank"
                   rel="noreferrer"
                   className="font-sans text-sm text-ink/80 dark:text-white/80 mt-2 inline-block underline underline-offset-4 hover:opacity-70 transition-opacity"
                 >
-                  /projects/flo-state/thumbnail.jpg
+                  /media/flo-state/thumbnail.jpg
                 </a>
               </div>
             </div>
