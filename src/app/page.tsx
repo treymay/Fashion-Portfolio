@@ -16,7 +16,7 @@ export default function HomePage() {
           transition={{ duration: 1.1, ease: "easeInOut" }}
           className="absolute inset-0"
         >
-          {/* Desktop hero */}
+          {/* Light mode — desktop */}
           <Image
             src="/hero/Hero Image.png"
             alt="Trey May hero"
@@ -24,9 +24,9 @@ export default function HomePage() {
             priority
             unoptimized
             sizes="100vw"
-            className="hidden md:block object-contain"
+            className="hidden md:block dark:hidden object-contain"
           />
-          {/* Mobile hero */}
+          {/* Light mode — mobile */}
           <Image
             src="/hero/Hero Image MObile.png"
             alt="Trey May hero"
@@ -34,7 +34,27 @@ export default function HomePage() {
             priority
             unoptimized
             sizes="100vw"
-            className="block md:hidden object-contain"
+            className="block md:hidden dark:hidden object-contain"
+          />
+          {/* Dark mode — desktop */}
+          <Image
+            src="/hero/Hero Image Black.png"
+            alt="Trey May hero"
+            fill
+            priority
+            unoptimized
+            sizes="100vw"
+            className="hidden md:dark:block object-contain"
+          />
+          {/* Dark mode — mobile */}
+          <Image
+            src="/hero/Hero Image Mobile Black.png"
+            alt="Trey May hero"
+            fill
+            priority
+            unoptimized
+            sizes="100vw"
+            className="hidden dark:block md:dark:hidden object-contain"
           />
         </motion.div>
         <motion.div
