@@ -5,97 +5,27 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
-const heroLooks = [
-  {
-    src: "/hero/styling/look-07.png",
-    alt: "Styling look 07",
-    desktopPosition: "left-[17%] top-[6%] w-[16%]",
-  },
-  {
-    src: "/hero/styling/look-05.jpg",
-    alt: "Styling look 05",
-    desktopPosition: "left-[40%] bottom-[3%] w-[29%]",
-  },
-  {
-    src: "/hero/styling/look-03.png",
-    alt: "Styling look 03",
-    desktopPosition: "left-[0%] bottom-[8%] w-[20%]",
-  },
-  {
-    src: "/hero/styling/look-01.png",
-    alt: "Styling look 01",
-    desktopPosition: "left-[75%] top-[10%] w-[22%]",
-  },
-];
-
 export default function HomePage() {
   return (
     <>
-      {/* Hero: editorial styling collage */}
+      {/* Hero */}
       <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-paper dark:bg-ink">
-        <div className="absolute inset-0 bg-paper dark:bg-ink" />
-        <div className="absolute inset-0 px-4 md:px-8 lg:px-12 py-24 md:py-28">
-          <div className="w-full h-full max-w-[1280px] mx-auto">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.1, ease: "easeInOut" }}
-              className="relative hidden md:block w-full h-full"
-            >
-              {heroLooks.map((look, index) => (
-                <Link
-                  key={look.src}
-                  href="/styling/flo-state"
-                  className={`absolute ${look.desktopPosition} aspect-[3/4] rounded-[2px] overflow-hidden block`}
-                  aria-label={`Open Flo State project from ${look.alt}`}
-                >
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.12 + index * 0.1, duration: 0.85, ease: "easeOut" }}
-                    className="relative w-full h-full"
-                  >
-                    <Image
-                      src={look.src}
-                      alt={look.alt}
-                      fill
-                      priority
-                      unoptimized
-                      sizes="(max-width: 1024px) 50vw, 25vw"
-                      className="object-cover"
-                    />
-                  </motion.div>
-                </Link>
-              ))}
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.9, ease: "easeInOut" }}
-              className="md:hidden h-full grid grid-cols-2 gap-3"
-            >
-              {heroLooks.map((look) => (
-                <Link
-                  key={`mobile-${look.src}`}
-                  href="/styling/flo-state"
-                  className="relative rounded-[2px] overflow-hidden block"
-                  aria-label={`Open Flo State project from ${look.alt}`}
-                >
-                  <Image
-                    src={look.src}
-                    alt={look.alt}
-                    fill
-                    priority
-                    unoptimized
-                    sizes="50vw"
-                    className="object-cover"
-                  />
-                </Link>
-              ))}
-            </motion.div>
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.1, ease: "easeInOut" }}
+          className="absolute inset-0"
+        >
+          <Image
+            src="/hero/Hero Image.png"
+            alt="Trey May hero"
+            fill
+            priority
+            unoptimized
+            sizes="100vw"
+            className="object-cover"
+          />
+        </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
