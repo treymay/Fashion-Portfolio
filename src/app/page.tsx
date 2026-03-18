@@ -16,6 +16,7 @@ export default function HomePage() {
           transition={{ duration: 1.1, ease: "easeInOut" }}
           className="absolute inset-0"
         >
+          {/* Desktop hero */}
           <Image
             src="/hero/Hero Image.png"
             alt="Trey May hero"
@@ -23,7 +24,17 @@ export default function HomePage() {
             priority
             unoptimized
             sizes="100vw"
-            className="object-contain"
+            className="hidden md:block object-contain"
+          />
+          {/* Mobile hero */}
+          <Image
+            src="/hero/Hero Image MObile.png"
+            alt="Trey May hero"
+            fill
+            priority
+            unoptimized
+            sizes="100vw"
+            className="block md:hidden object-contain"
           />
         </motion.div>
         <motion.div
