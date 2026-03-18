@@ -50,7 +50,7 @@ export default function FloStateArchivePage() {
       <div className="px-6 md:px-12 lg:px-20 max-w-6xl mx-auto">
         <ScrollReveal>
           <p className="nav-link text-xs text-ink/60 dark:text-white/60">
-            Archive / Film
+            Styling / Film
           </p>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-ink dark:text-white mt-3">
             Flo State (Film)

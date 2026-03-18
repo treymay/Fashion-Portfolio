@@ -13,14 +13,14 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Trey May — Fashion Design & Photography",
+  title: "Trey May - Fashion Styling & Design",
   description:
     "Fashion design and photography portfolio. Chic, mature, editorial.",
   icons: {
     icon: "/light-mode-logo.png",
   },
   openGraph: {
-    title: "Trey May — Fashion Design & Photography",
+    title: "Trey May - Fashion Styling & Design",
     description: "Fashion design and photography portfolio.",
   },
 };

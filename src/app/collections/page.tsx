@@ -8,13 +8,13 @@ export default function CollectionsPage() {
       <div className="px-6 md:px-12 lg:px-20 max-w-6xl mx-auto">
         <ScrollReveal>
           <p className="nav-link text-xs text-ink/60 dark:text-white/60">
-            Collections
+            Design
           </p>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-ink dark:text-white mt-3">
-            Collections
+            Design
           </h1>
           <p className="font-sans text-ink/70 dark:text-white/70 mt-4 text-lg max-w-2xl">
-            New collections are currently in development and will be released here.
+            New design work is currently in development and will be released here.
           </p>
         </ScrollReveal>
 
