@@ -23,7 +23,7 @@ export default function HomePage() {
             priority
             unoptimized
             sizes="100vw"
-            className="object-cover"
+            className="object-contain"
           />
         </motion.div>
         <motion.div
