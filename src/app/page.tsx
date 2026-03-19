@@ -122,7 +122,7 @@ export default function HomePage() {
       <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28 bg-paper">
         <ScrollReveal>
           <p className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-ink leading-[1.15] max-w-3xl">
-            Intentional styling and design from a style alchemist.
+            Intentional styling and design from a visual futurist.
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.2} className="mt-16 flex flex-wrap gap-8">
