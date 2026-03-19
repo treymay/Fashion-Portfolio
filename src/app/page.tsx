@@ -56,7 +56,7 @@ export default function HomePage() {
             {trackImages.map((item, index) => (
               <article
                 key={`${item.src}-${index}`}
-                className="relative h-[220px] shrink-0 overflow-hidden md:h-[300px]"
+                className="relative h-[401px] shrink-0 overflow-hidden md:h-[562px]"
                 style={{ aspectRatio: item.ratio }}
               >
                 <Image
