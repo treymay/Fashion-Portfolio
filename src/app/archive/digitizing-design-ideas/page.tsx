@@ -1,58 +1,31 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
-import summaryImage from "../../../../Digitizing Design Ideas/Digi.png";
-import assignment4Bottle from "../../../../Digitizing Design Ideas/Assignment 4 Bottle.png";
-import assignment4Flashlight from "../../../../Digitizing Design Ideas/Assignment 4 Flashlight.png";
-import assignment5WithBg from "../../../../Digitizing Design Ideas/Assignment 5 With BG.png";
-import assignment6Bowl from "../../../../Digitizing Design Ideas/Assignment 6 Bowl.png";
-import assignment6Pen from "../../../../Digitizing Design Ideas/Assignment 6 Pen.png";
-import assignment6Umbrella from "../../../../Digitizing Design Ideas/Assignment 6 Umbrella.png";
-import assignment7Headphones from "../../../../Digitizing Design Ideas/Assignment 7 Headphones.png";
-import assignment7Tennis from "../../../../Digitizing Design Ideas/Assignment 7 Tennis.png";
-import assignment8Duck from "../../../../Digitizing Design Ideas/Assignment 8 Duck Render (1).png";
-import assignment8Mice from "../../../../Digitizing Design Ideas/Assignmnet 8 Mice (1).png";
-import assignment9Furniture from "../../../../Digitizing Design Ideas/Assignment 9 - Furniture .png";
-import assignment10Render from "../../../../Digitizing Design Ideas/Assignment 10 Render (1).jpg";
-import assignment11Render from "../../../../Digitizing Design Ideas/Assignment 11 Render Revised (1).png";
-import assignment12Render from "../../../../Digitizing Design Ideas/Assignment 12 Render.png";
-import assignment13Render from "../../../../Digitizing Design Ideas/Assignment 13 Render.jpg";
-import assignment14RenderFront from "../../../../Digitizing Design Ideas/Assignment 14 Render Front.png";
-import assignment14RenderBack from "../../../../Digitizing Design Ideas/Assignment 14 Render Back.png";
-
 type ProjectImage = {
-  src: StaticImageData;
+  src: string;
   alt: string;
   label: string;
 };
 
 const projectImages: ProjectImage[] = [
-  {
-    src: summaryImage,
-    alt: "Digitizing Design Ideas class collage summary",
-    label: "Course Summary",
-  },
-  { src: assignment4Bottle, alt: "Assignment 4 bottle 3D model render", label: "Assignment 4 - Bottle" },
-  { src: assignment4Flashlight, alt: "Assignment 4 flashlight 3D model render", label: "Assignment 4 - Flashlight" },
-  { src: assignment5WithBg, alt: "Assignment 5 3D model render with background", label: "Assignment 5" },
-  { src: assignment6Bowl, alt: "Assignment 6 bowl 3D model render", label: "Assignment 6 - Bowl" },
-  { src: assignment6Pen, alt: "Assignment 6 pen 3D model render", label: "Assignment 6 - Pen" },
-  { src: assignment6Umbrella, alt: "Assignment 6 umbrella 3D model render", label: "Assignment 6 - Umbrella" },
-  { src: assignment7Headphones, alt: "Assignment 7 headphones 3D model render", label: "Assignment 7 - Headphones" },
-  { src: assignment7Tennis, alt: "Assignment 7 tennis racket 3D model render", label: "Assignment 7 - Tennis Racket" },
-  { src: assignment8Duck, alt: "Assignment 8 duck 3D model render", label: "Assignment 8 - Duck" },
-  { src: assignment8Mice, alt: "Assignment 8 mice 3D model render", label: "Assignment 8 - Mouse Variations" },
-  { src: assignment9Furniture, alt: "Assignment 9 furniture 3D model render", label: "Assignment 9 - Furniture" },
-  { src: assignment10Render, alt: "Assignment 10 3D model render", label: "Assignment 10" },
-  { src: assignment11Render, alt: "Assignment 11 revised 3D model render", label: "Assignment 11" },
-  { src: assignment12Render, alt: "Assignment 12 3D model render", label: "Assignment 12" },
-  { src: assignment13Render, alt: "Assignment 13 3D model render", label: "Assignment 13" },
-  { src: assignment14RenderFront, alt: "Assignment 14 front 3D model render", label: "Assignment 14 - Front" },
-  { src: assignment14RenderBack, alt: "Assignment 14 back 3D model render", label: "Assignment 14 - Back" },
+  { src: "/media/flo-state/styling-00a.png", alt: "Digital styling render 1", label: "Study 01" },
+  { src: "/media/flo-state/styling-00b.png", alt: "Digital styling render 2", label: "Study 02" },
+  { src: "/media/flo-state/styling-01.png", alt: "Digital styling render 3", label: "Study 03" },
+  { src: "/media/flo-state/styling-02.png", alt: "Digital styling render 4", label: "Study 04" },
+  { src: "/media/flo-state/styling-03.png", alt: "Digital styling render 5", label: "Study 05" },
+  { src: "/media/flo-state/styling-04.jpg", alt: "Digital styling render 6", label: "Study 06" },
+  { src: "/media/flo-state/styling-05.jpg", alt: "Digital styling render 7", label: "Study 07" },
+  { src: "/media/flo-state/styling-06.jpg", alt: "Digital styling render 8", label: "Study 08" },
+  { src: "/media/flo-state/styling-07.png", alt: "Digital styling render 9", label: "Study 09" },
+  { src: "/media/flo-state/styling-08.png", alt: "Digital styling render 10", label: "Study 10" },
+  { src: "/media/flo-state/styling-09.png", alt: "Digital styling render 11", label: "Study 11" },
+  { src: "/media/flo-state/styling-10.png", alt: "Digital styling render 12", label: "Study 12" },
+  { src: "/media/flo-state/styling-11.png", alt: "Digital styling render 13", label: "Study 13" },
+  { src: "/media/flo-state/styling-12.png", alt: "Digital styling render 14", label: "Study 14" },
 ];
 
 export default function DigitizingDesignIdeasPage() {
@@ -91,13 +64,14 @@ export default function DigitizingDesignIdeasPage() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.14} className="mt-12">
-          <div className="rounded-sm overflow-hidden border border-ink/10 dark:border-white/10">
+          <div className="relative aspect-[16/9] rounded-sm overflow-hidden border border-ink/10 dark:border-white/10">
             <Image
-              src={summaryImage}
-              alt="Digitizing Design Ideas class collage summary"
+              src={projectImages[0].src}
+              alt={projectImages[0].alt}
+              fill
               priority
               sizes="100vw"
-              className="w-full h-auto"
+              className="object-cover"
             />
           </div>
         </ScrollReveal>
@@ -166,6 +140,8 @@ export default function DigitizingDesignIdeasPage() {
                 <Image
                   src={selectedImage.src}
                   alt={selectedImage.alt}
+                  width={1600}
+                  height={2000}
                   sizes="100vw"
                   className="w-full h-auto"
                 />
