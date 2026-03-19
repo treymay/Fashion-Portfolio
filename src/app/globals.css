@@ -4,12 +4,7 @@
 
 :root {
   --ink: #0a0a0a;
-  --paper: #ffffff;
-}
-
-.dark {
-  --ink: #fafafa;
-  --paper: #0a0a0a;
+  --paper: #e9e9e9;
 }
 
 html {
@@ -23,28 +18,43 @@ body {
   color: var(--ink);
 }
 
-.dark body {
-  background-color: #0a0a0a;
-  color: #fafafa;
-}
-
 /* Editorial uppercase nav/titles */
 .nav-link,
 .editorial {
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
 }
 
 /* Selection */
 ::selection {
-  @apply bg-ink/20 dark:bg-white/20;
+  @apply bg-ink/20;
 }
 
 :focus-visible {
-  @apply outline-2 outline-offset-2 outline-ink dark:outline-white;
+  @apply outline-2 outline-offset-2 outline-ink;
 }
 
-/* Glass / borders for light/dark */
+/* Glass / borders */
 .glass-light {
-  @apply bg-white/80 dark:bg-black/40 border border-ink/10 dark:border-white/10;
+  @apply bg-white/80 border border-ink/10;
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-left 42s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }

@@ -1,14 +1,27 @@
 import type { Metadata } from "next";
-import { Syne } from "next/font/google";
+import { Manrope, Bodoni_Moda, Outfit } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/context/ThemeContext";
 import { Nav } from "@/components/Nav";
 import { CursorFollower } from "@/components/CursorFollower";
 
-const syne = Syne({
+const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-syne",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
+  display: "swap",
+});
+
+const bodoni = Bodoni_Moda({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-bodoni",
+  display: "swap",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-outfit",
   display: "swap",
 });
 
@@ -31,20 +44,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable}`} suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(!t&&d))document.documentElement.classList.add('dark');else document.documentElement.classList.remove('dark');})();`,
-          }}
-        />
-      </head>
-      <body className="font-sans min-h-screen bg-paper text-ink dark:bg-ink dark:text-paper">
-        <ThemeProvider>
-          <CursorFollower />
-          <Nav />
-          <main className="min-h-screen">{children}</main>
-        </ThemeProvider>
+    <html
+      lang="en"
+      className={`${manrope.variable} ${bodoni.variable} ${outfit.variable}`}
+    >
+      <body className="font-sans min-h-screen bg-paper text-ink">
+        <CursorFollower />
+        <Nav />
+        <main className="min-h-screen">{children}</main>
       </body>
     </html>
   );

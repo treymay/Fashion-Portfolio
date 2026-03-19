@@ -24,8 +24,10 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-syne)", "system-ui", "sans-serif"],
-        sans: ["var(--font-syne)", "system-ui", "sans-serif"],
+        display: ["var(--font-manrope)", "system-ui", "sans-serif"],
+        sans: ["var(--font-manrope)", "system-ui", "sans-serif"],
+        serif: ["var(--font-bodoni)", "Didot", "serif"],
+        headline: ["var(--font-outfit)", "system-ui", "sans-serif"],
       },
       animation: {
         "fade-in": "fadeIn 0.8s ease-out forwards",

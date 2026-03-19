@@ -5,7 +5,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { useTheme } from "@/context/ThemeContext";
 
 const links = [
   { href: "/", label: "Home" },
@@ -17,19 +16,13 @@ const links = [
 export function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
-
-  const isDark = theme === "dark";
+  const isContactActive = pathname === "/contact";
 
   return (
     <>
-      {/* ZENITH-style: nav left | logo center | right: dark mode + contact */}
+      {/* ZENITH-style: nav left | logo center | right: contact */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors ${
-          isDark
-            ? "bg-ink border-white/10"
-            : "bg-paper border-ink/10"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 border-b transition-colors bg-paper border-ink/10"
       >
         <div className="flex items-center justify-between px-4 md:px-8 lg:px-12 h-16 md:h-20">
           {/* Left: nav links */}
@@ -42,13 +35,19 @@ export function Nav() {
                   <Link
                     key={href}
                     href={href}
-                    className={`nav-link text-xs font-medium tracking-widest transition-opacity ${
-                      isActive
-                        ? "opacity-100"
-                        : "opacity-70 hover:opacity-100"
-                    } ${isDark ? "text-white" : "text-ink"}`}
+                    className={`group relative nav-link text-xs font-bold tracking-widest transition-opacity ${
+                      isActive ? "opacity-100" : "opacity-70 hover:opacity-100"
+                    } text-ink`}
                   >
                     {label}
+                    <span
+                      className={`absolute left-0 -bottom-1 h-px bg-ink transition-transform duration-300 origin-left ${
+                        isActive
+                          ? "w-full scale-x-100"
+                          : "w-full scale-x-0 group-hover:scale-x-100"
+                      }`}
+                      aria-hidden="true"
+                    />
                   </Link>
                 );
               })}
@@ -61,7 +60,7 @@ export function Nav() {
             aria-label="Trey May — Home"
           >
             <Image
-              src={isDark ? "/dark-mode-logo.png" : "/light-mode-logo.png"}
+              src="/light-mode-logo.png"
               alt="Trey May"
               width={56}
               height={56}
@@ -70,40 +69,23 @@ export function Nav() {
             />
           </Link>
 
-          {/* Right: dark mode toggle + contact (desktop) */}
+          {/* Right: contact (desktop) */}
           <div className="hidden md:flex items-center gap-4 lg:gap-6">
-            <button
-              type="button"
-              onClick={toggleTheme}
-              className="nav-link text-xs font-medium tracking-widest flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
-              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              <span>{isDark ? "Dark" : "Light"} mode</span>
-              <span
-                className={`w-10 h-5 rounded-full border flex items-center transition-colors ${
-                  isDark
-                    ? "bg-white/20 border-white/30"
-                    : "bg-ink/10 border-ink/20"
-                }`}
-              >
-                <span
-                  className={`block w-4 h-4 rounded-full bg-current transition-transform ${
-                    isDark
-                      ? "translate-x-5 bg-white"
-                      : "translate-x-0.5 bg-ink"
-                  }`}
-                />
-              </span>
-            </button>
             <Link
               href="/contact"
-              className={`nav-link text-xs font-medium tracking-widest px-4 py-2 border transition-colors ${
-                isDark
-                  ? "border-white/30 text-white hover:bg-white/10"
-                  : "border-ink text-ink hover:bg-ink/5"
-              }`}
+              className={`group relative nav-link text-xs font-bold tracking-widest transition-opacity ${
+                isContactActive ? "opacity-100" : "opacity-70 hover:opacity-100"
+              } text-ink`}
             >
               Contact
+              <span
+                className={`absolute left-0 -bottom-1 h-px bg-ink transition-transform duration-300 origin-left ${
+                  isContactActive
+                    ? "w-full scale-x-100"
+                    : "w-full scale-x-0 group-hover:scale-x-100"
+                }`}
+                aria-hidden="true"
+              />
             </Link>
           </div>
 
@@ -111,7 +93,7 @@ export function Nav() {
           <button
             type="button"
             onClick={() => setOpen(!open)}
-            className={`md:hidden nav-link text-xs ${isDark ? "text-white" : "text-ink"}`}
+            className="md:hidden nav-link text-xs text-ink"
             aria-label={open ? "Close menu" : "Open menu"}
           >
             {open ? "Close" : "Menu"}
@@ -126,7 +108,7 @@ export function Nav() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 md:hidden bg-paper dark:bg-ink flex flex-col justify-center items-center gap-8"
+            className="fixed inset-0 z-40 md:hidden bg-paper flex flex-col justify-center items-center gap-8"
             onClick={() => setOpen(false)}
           >
             {links.map(({ href, label }, i) => {
@@ -144,8 +126,8 @@ export function Nav() {
                     onClick={() => setOpen(false)}
                     className={`font-display text-xl tracking-wide ${
                       isActive
-                        ? "text-ink dark:text-white font-medium"
-                        : "text-ink/70 dark:text-white/70 hover:text-ink dark:hover:text-white"
+                        ? "text-ink font-bold"
+                        : "text-ink/70 hover:text-ink"
                     }`}
                   >
                     {label}
@@ -153,24 +135,6 @@ export function Nav() {
                 </motion.div>
               );
             })}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: links.length * 0.05 }}
-              className="flex flex-col items-center gap-4 mt-8"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                type="button"
-                onClick={() => {
-                  toggleTheme();
-                  setOpen(false);
-                }}
-                className="nav-link text-sm text-ink/70 dark:text-white/70 hover:text-ink dark:hover:text-white"
-              >
-                {isDark ? "Dark" : "Light"} mode
-              </button>
-            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

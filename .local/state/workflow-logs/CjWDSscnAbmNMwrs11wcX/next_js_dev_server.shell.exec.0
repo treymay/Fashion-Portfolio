@@ -1,0 +1,15 @@
+
+> trey-may-portfolio@0.1.0 dev
+> next dev -H 0.0.0.0 -p 5000
+
+[1G[0K[1m[38;2;173;127;168m▲ Next.js 16.1.6[39m[22m (Turbopack)
+- Local:         http://localhost:5000
+- Network:       http://0.0.0.0:5000
+
+[32m[1m✓[22m[39m Starting...
+[32m[1m✓[22m[39m Ready in 607ms
+ GET / [32m200[39m in 2.0s[2m (compile: 1721ms, render: 301ms)[22m
+[33m[1m⚠[22m[39m Cross origin request detected from c50ab71e-b016-4379-be0e-ba9596714eba-00-33x9l1n1xw0hz.kirk.replit.dev to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ GET / [32m200[39m in 53ms[2m (compile: 5ms, render: 49ms)[22m
+ GET / [32m200[39m in 261ms[2m (compile: 80ms, render: 182ms)[22m
