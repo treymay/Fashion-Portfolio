@@ -6,21 +6,19 @@ import { useEffect, useState } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 export default function HomePage() {
+  /* Flo State hero set — full cycle, no extras mixed in */
   const portfolioPool = [
     { src: "/media/flo-state/styling-00a.png", ratio: 2 / 3 },
     { src: "/media/flo-state/styling-00b.png", ratio: 2 / 3 },
     { src: "/media/flo-state/styling-01.png", ratio: 2 / 3 },
     { src: "/media/flo-state/styling-02.png", ratio: 2 / 3 },
-    { src: "/media/flo-state/styling-03.png", ratio: 2 / 3 },
     { src: "/media/flo-state/styling-04.jpg", ratio: 2 / 3 },
     { src: "/media/flo-state/styling-05.jpg", ratio: 2 / 3 },
     { src: "/media/flo-state/styling-06.jpg", ratio: 2 / 3 },
     { src: "/media/flo-state/styling-07.png", ratio: 2 / 3 },
     { src: "/media/flo-state/styling-08.png", ratio: 2 / 3 },
-    { src: "/media/flo-state/styling-09.png", ratio: 2 / 3 },
-    { src: "/media/flo-state/styling-10.png", ratio: 2 / 3 },
-    { src: "/media/flo-state/styling-11.png", ratio: 2 / 3 },
-    { src: "/media/flo-state/styling-12.png", ratio: 2 / 3 },
+    { src: "/media/flo-state/styling-13.jpg", ratio: 2 / 3 },
+    { src: "/media/flo-state/styling-14.jpg", ratio: 2 / 3 },
   ];
 
   const uniquePool = Array.from(
