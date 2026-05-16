@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  allowedDevOrigins: ['*.spock.replit.dev', '*.replit.dev'],
   async redirects() {
     return [
       { source: "/styling/digitizing-design-ideas", destination: "/styling", permanent: true },

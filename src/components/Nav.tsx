@@ -1,140 +1,119 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
-const links = [
-  { href: "/", label: "Home" },
+const navLinks = [
   { href: "/styling", label: "Styling" },
   { href: "/design", label: "Design" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const isContactActive = pathname === "/contact";
 
   return (
     <>
-      {/* ZENITH-style: nav left | logo center | right: contact */}
-      <header
-        className="fixed top-0 left-0 right-0 z-50 border-b transition-colors bg-paper border-ink/10"
-      >
-        <div className="flex items-center justify-between px-4 md:px-8 lg:px-12 h-16 md:h-20">
-          {/* Left: nav links */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
-            {links
-              .filter((l) => l.href !== "/contact")
-              .map(({ href, label }) => {
-                const isActive = pathname === href;
+      <header className="fixed top-0 left-0 right-0 z-50 glass-dark">
+        <div className="flex items-center justify-between px-5 md:px-8 h-[52px]">
+
+          {/* Left: hamburger + nav links */}
+          <div className="flex items-center gap-6">
+            <button
+              type="button"
+              onClick={() => setOpen(!open)}
+              aria-label={open ? "Close menu" : "Open menu"}
+              className="flex flex-col gap-[5px] group"
+            >
+              <span className={`block h-px w-5 bg-ink transition-all duration-300 origin-center ${open ? "rotate-45 translate-y-[6px]" : ""}`} />
+              <span className={`block h-px w-5 bg-ink transition-all duration-300 ${open ? "opacity-0 scale-x-0" : ""}`} />
+              <span className={`block h-px w-5 bg-ink transition-all duration-300 origin-center ${open ? "-rotate-45 -translate-y-[6px]" : ""}`} />
+            </button>
+
+            <nav className="hidden md:flex items-center gap-7">
+              {navLinks.map(({ href, label }) => {
+                const isActive = pathname.startsWith(href);
                 return (
                   <Link
                     key={href}
                     href={href}
-                    className={`group relative nav-link text-xs font-bold tracking-widest transition-opacity ${
-                      isActive ? "opacity-100" : "opacity-70 hover:opacity-100"
-                    } text-ink`}
+                    className={`nav-link text-[10px] font-semibold tracking-[0.18em] transition-opacity ${
+                      isActive ? "text-ink opacity-100" : "text-ink/60 hover:text-ink hover:opacity-100"
+                    }`}
                   >
                     {label}
-                    <span
-                      className={`absolute left-0 -bottom-1 h-px bg-ink transition-transform duration-300 origin-left ${
-                        isActive
-                          ? "w-full scale-x-100"
-                          : "w-full scale-x-0 group-hover:scale-x-100"
-                      }`}
-                      aria-hidden="true"
-                    />
                   </Link>
                 );
               })}
-          </nav>
-
-          {/* Center: logo */}
-          <Link
-            href="/"
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-12 h-12 md:w-14 md:h-14"
-            aria-label="Trey May — Home"
-          >
-            <Image
-              src="/light-mode-logo.png"
-              alt="Trey May"
-              width={56}
-              height={56}
-              className="w-full h-full object-contain"
-              priority
-            />
-          </Link>
-
-          {/* Right: contact (desktop) */}
-          <div className="hidden md:flex items-center gap-4 lg:gap-6">
-            <Link
-              href="/contact"
-              className={`group relative nav-link text-xs font-bold tracking-widest transition-opacity ${
-                isContactActive ? "opacity-100" : "opacity-70 hover:opacity-100"
-              } text-ink`}
-            >
-              Contact
-              <span
-                className={`absolute left-0 -bottom-1 h-px bg-ink transition-transform duration-300 origin-left ${
-                  isContactActive
-                    ? "w-full scale-x-100"
-                    : "w-full scale-x-0 group-hover:scale-x-100"
-                }`}
-                aria-hidden="true"
-              />
-            </Link>
+            </nav>
           </div>
 
-          {/* Mobile menu trigger */}
-          <button
-            type="button"
-            onClick={() => setOpen(!open)}
-            className="md:hidden nav-link text-xs text-ink"
-            aria-label={open ? "Close menu" : "Open menu"}
+          {/* Center: wordmark */}
+          <Link
+            href="/"
+            className="absolute left-1/2 -translate-x-1/2 nav-link text-[11px] font-bold tracking-[0.25em] text-ink whitespace-nowrap"
+            aria-label="Trey May — Home"
           >
-            {open ? "Close" : "Menu"}
-          </button>
+            TREY MAY
+          </Link>
+
+          {/* Right: contact */}
+          <div className="flex items-center">
+            <Link
+              href="/contact"
+              className={`nav-link text-[10px] font-semibold tracking-[0.18em] transition-opacity ${
+                pathname === "/contact" ? "text-ink opacity-100" : "text-ink/60 hover:text-ink hover:opacity-100"
+              }`}
+            >
+              Contact
+            </Link>
+          </div>
         </div>
       </header>
 
-      {/* Mobile flyout */}
+      {/* Full-screen menu overlay */}
       <AnimatePresence>
         {open && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 md:hidden bg-paper flex flex-col justify-center items-center gap-8"
-            onClick={() => setOpen(false)}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-40 bg-paper flex flex-col"
+            style={{ paddingTop: "52px" }}
           >
-            {links.map(({ href, label }, i) => {
-              const isActive = pathname === href;
-              return (
-                <motion.div
-                  key={href}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ delay: i * 0.05 }}
-                >
-                  <Link
-                    href={href}
-                    onClick={() => setOpen(false)}
-                    className={`font-display text-xl tracking-wide ${
-                      isActive
-                        ? "text-ink font-bold"
-                        : "text-ink/70 hover:text-ink"
-                    }`}
-                  >
-                    {label}
-                  </Link>
-                </motion.div>
-              );
-            })}
+            <div className="flex flex-col justify-center flex-1 px-8 gap-2">
+              {[{ href: "/", label: "Home" }, ...navLinks, { href: "/contact", label: "Contact" }].map(
+                ({ href, label }, i) => {
+                  const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href);
+                  return (
+                    <motion.div
+                      key={href}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -10 }}
+                      transition={{ delay: i * 0.06, duration: 0.3 }}
+                    >
+                      <Link
+                        href={href}
+                        onClick={() => setOpen(false)}
+                        className={`block font-display text-5xl md:text-7xl font-bold tracking-tight py-2 transition-opacity ${
+                          isActive ? "text-ink" : "text-ink/30 hover:text-ink"
+                        }`}
+                      >
+                        {label}
+                      </Link>
+                    </motion.div>
+                  );
+                }
+              )}
+            </div>
+
+            <div className="px-8 pb-10">
+              <p className="nav-link text-[10px] text-ink/30">Trey May — Fashion Styling & Design</p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

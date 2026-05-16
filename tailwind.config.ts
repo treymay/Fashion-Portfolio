@@ -11,16 +11,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Black & white only — editorial monochrome
         ink: {
-          DEFAULT: "#0a0a0a",
-          light: "#1a1a1a",
-          muted: "#444",
+          DEFAULT: "#f0f0f0",
+          light: "#ffffff",
+          muted: "#999999",
         },
         paper: {
-          DEFAULT: "#ffffff",
-          off: "#f5f5f5",
-          muted: "#e5e5e5",
+          DEFAULT: "#080808",
+          off: "#111111",
+          muted: "#1a1a1a",
         },
       },
       fontFamily: {
@@ -32,6 +31,7 @@ const config: Config = {
       animation: {
         "fade-in": "fadeIn 0.8s ease-out forwards",
         "slide-up": "slideUp 0.6s ease-out forwards",
+        "marquee-left": "marqueeLeft 42s linear infinite",
       },
       keyframes: {
         fadeIn: {
@@ -41,6 +41,10 @@ const config: Config = {
         slideUp: {
           "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        marqueeLeft: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
     },

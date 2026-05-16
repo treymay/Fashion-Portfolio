@@ -2,139 +2,197 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
+const heroSections = [
+  {
+    src: "/media/flo-state/styling-00a.png",
+    label: "Flo State",
+    category: "Styling · 2024",
+    href: "/styling/flo-state",
+    cta: "View Project",
+    position: "object-center",
+  },
+  {
+    src: "/media/flo-state/styling-06.jpg",
+    label: "Editorial",
+    category: "Styling · Campaign",
+    href: "/styling",
+    cta: "View Work",
+    position: "object-center",
+  },
+  {
+    src: "/media/flo-state/styling-02.png",
+    label: "Archive",
+    category: "Styling · Collection",
+    href: "/styling",
+    cta: "Explore",
+    position: "object-top",
+  },
+];
+
+const projectCategories = [
+  {
+    label: "Styling",
+    href: "/styling",
+    src: "/media/flo-state/styling-01.png",
+    description: "Editorial looks & campaign work",
+  },
+  {
+    label: "Design",
+    href: "/design",
+    src: "/media/flo-state/styling-07.png",
+    description: "Garment & concept design",
+  },
+  {
+    label: "Archive",
+    href: "/styling/flo-state",
+    src: "/media/flo-state/styling-05.jpg",
+    description: "Flo State — full lookbook",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+    src: "/media/flo-state/styling-13.jpg",
+    description: "Collaborate · Commission",
+  },
+];
+
 export default function HomePage() {
-  /* Flo State hero set — full cycle, no extras mixed in */
-  const portfolioPool = [
-    { src: "/media/flo-state/styling-00a.png", ratio: 2 / 3 },
-    { src: "/media/flo-state/styling-00b.png", ratio: 2 / 3 },
-    { src: "/media/flo-state/styling-01.png", ratio: 2 / 3 },
-    { src: "/media/flo-state/styling-02.png", ratio: 2 / 3 },
-    { src: "/media/flo-state/styling-04.jpg", ratio: 2 / 3 },
-    { src: "/media/flo-state/styling-05.jpg", ratio: 2 / 3 },
-    { src: "/media/flo-state/styling-06.jpg", ratio: 2 / 3 },
-    { src: "/media/flo-state/styling-07.png", ratio: 2 / 3 },
-    { src: "/media/flo-state/styling-08.png", ratio: 2 / 3 },
-    { src: "/media/flo-state/styling-13.jpg", ratio: 2 / 3 },
-    { src: "/media/flo-state/styling-14.jpg", ratio: 2 / 3 },
-  ];
-
-  const uniquePool = Array.from(
-    new Map(portfolioPool.map((item) => [item.src, item])).values(),
-  );
-
-  const [carouselImages, setCarouselImages] = useState(
-    uniquePool,
-  );
-
-  useEffect(() => {
-    const shuffled = [...uniquePool].sort(() => Math.random() - 0.5);
-    setCarouselImages(shuffled);
-  }, []);
-
-  const trackImages = [...carouselImages, ...carouselImages];
-
   return (
     <>
-      {/* Auto-moving marquee carousel */}
-      <section className="relative min-h-[72dvh] overflow-hidden bg-paper text-ink pt-28 pb-14 md:pt-36">
-        <div className="px-6 text-center md:px-12 lg:px-20">
-          <h1 className="font-display text-5xl font-extrabold tracking-[0.08em] md:text-7xl lg:text-8xl">
-            TREY MAY
-          </h1>
-          <p className="mt-2 font-headline text-2xl font-light tracking-[0.06em] md:text-4xl lg:text-5xl">
-            Styling + Design
-          </p>
-        </div>
+      {/* ── HERO SECTIONS (full-bleed stacked) ─────────────────────── */}
+      {heroSections.map((section, i) => (
+        <section
+          key={section.src}
+          className="relative w-full overflow-hidden"
+          style={{ height: "100svh" }}
+        >
+          <Image
+            src={section.src}
+            alt={section.label}
+            fill
+            priority={i === 0}
+            unoptimized
+            sizes="100vw"
+            className={`object-cover ${section.position}`}
+          />
 
-        <div className="mt-10 overflow-hidden" aria-label="Hero image carousel">
-          <div className="marquee-track flex w-max items-end gap-2 px-0 md:gap-3">
-            {trackImages.map((item, index) => (
-              <article
-                key={`${item.src}-${index}`}
-                className="relative h-[401px] shrink-0 overflow-hidden md:h-[562px]"
-                style={{ aspectRatio: item.ratio }}
-              >
-                <Image
-                  src={item.src}
-                  alt={`Portfolio image ${index + 1}`}
-                  fill
-                  priority={index < 8}
-                  loading="eager"
-                  unoptimized
-                  sizes="(max-width: 768px) 35vw, 20vw"
-                  className="object-cover"
-                />
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-black/20" />
 
-      {/* Asymmetric intro: portrait left, quote + bio right */}
-      <section className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16 px-6 md:px-12 lg:px-20 py-20 md:py-28 bg-paper border-t border-ink/10">
-        <ScrollReveal className="md:col-span-5 md:row-span-2">
-          <div className="aspect-[3/4] max-w-md w-full mx-auto md:mx-0 relative rounded-sm overflow-hidden border border-ink/10">
-            <Image
-              src="/profile-new.png"
-              alt="Trey May"
-              fill
-              sizes="(max-width: 768px) 100vw, 420px"
-              className="object-cover object-top"
-              priority
-            />
-          </div>
-        </ScrollReveal>
-        <ScrollReveal delay={0.15} className="md:col-span-6 md:col-start-7 flex flex-col justify-end pb-2">
-          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-semibold text-ink leading-snug tracking-tight">
-            Fashion is the key to the transformation of someone&apos;s appearance from unimaginative to mystical and inspired.
-          </h2>
-        </ScrollReveal>
-        <ScrollReveal delay={0.25} className="md:col-span-7 md:col-start-7">
-          <p className="font-sans text-ink/85 text-base md:text-lg leading-relaxed max-w-2xl">
-            Trey is currently pursuing a BFA in Fashion at the Savannah College of Art and Design with a tentative graduation date of Spring 2029. His love for exploration of different disciplines is proof that his skill set isn&apos;t limited to designing garments. Trey&apos;s styling ability almost feels as if it is an &quot;innate talent,&quot; but he is always improving when it comes to storytelling and conceptual activities. His passion for world-building is the engine for his creativity while his avant-garde perspective takes the wheel. His ultimate goal is to curate eye-catchign looks and make wearable clothing that is both innovative and next-level. Trey is currently open to taking advantage of opportunities with a willing and open heart.
-          </p>
-          <p className="font-sans text-ink/60 mt-6 text-sm nav-link">
-            Trey May
-          </p>
-        </ScrollReveal>
-      </section>
+          {/* Top-right: section index */}
+          <span className="absolute top-20 right-6 md:right-10 nav-link text-[9px] text-ink/40 tabular-nums">
+            {String(i + 1).padStart(2, "0")} / {String(heroSections.length).padStart(2, "0")}
+          </span>
 
-      {/* Teaser strip */}
-      <section className="bg-paper-off border-y border-ink/10 py-12 px-6">
-        <ScrollReveal>
-          <div className="max-w-4xl mx-auto text-center">
+          {/* Bottom-left: text overlay */}
+          <div className="absolute bottom-10 left-6 md:left-10">
+            <p className="nav-link text-[9px] text-ink/50 mb-2 hero-text-shadow">
+              {section.category}
+            </p>
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-ink leading-none tracking-tight hero-text-shadow mb-4">
+              {section.label}
+            </h2>
             <Link
-              href="/styling"
-              className="font-display text-3xl md:text-5xl font-semibold text-ink hover:opacity-70 transition-opacity"
+              href={section.href}
+              className="inline-flex items-center gap-2 nav-link text-[10px] text-ink/80 hover:text-ink border-b border-ink/30 hover:border-ink pb-0.5 transition-all duration-200"
             >
-              Explore Sections →
+              {section.cta}
+              <span aria-hidden>→</span>
             </Link>
           </div>
-        </ScrollReveal>
+        </section>
+      ))}
+
+      {/* ── PROJECT CATEGORIES GRID ─────────────────────────────────── */}
+      <section className="bg-paper">
+        <div className="px-5 md:px-8 pt-16 pb-4">
+          <ScrollReveal>
+            <p className="nav-link text-[9px] text-ink/40">Portfolio</p>
+          </ScrollReveal>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4">
+          {projectCategories.map((cat, i) => (
+            <ScrollReveal key={cat.href} delay={i * 0.08}>
+              <Link href={cat.href} className="group relative block overflow-hidden">
+                <article className="relative overflow-hidden" style={{ aspectRatio: "3/4" }}>
+                  <Image
+                    src={cat.src}
+                    alt={cat.label}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
+                </article>
+                <div className="px-4 py-4 border-t border-ink/10">
+                  <p className="nav-link text-[10px] text-ink font-semibold">{cat.label}</p>
+                  <p className="text-ink/40 text-xs mt-0.5 font-light">{cat.description}</p>
+                </div>
+              </Link>
+            </ScrollReveal>
+          ))}
+        </div>
       </section>
 
-      {/* Philosophy */}
-      <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28 bg-paper">
-        <ScrollReveal>
-          <p className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-ink leading-[1.15] max-w-3xl">
-            Intentional styling and design from an innovative creative.
-          </p>
-        </ScrollReveal>
-        <ScrollReveal delay={0.2} className="mt-16 flex flex-wrap gap-8">
-          <Link href="/styling" className="nav-link text-xs text-ink/70 hover:text-ink transition-colors">
-            Styling
-          </Link>
-          <Link href="/design" className="nav-link text-xs text-ink/70 hover:text-ink transition-colors">
-            Design
-          </Link>
-          <Link href="/contact" className="nav-link text-xs text-ink/70 hover:text-ink transition-colors">
-            Contact
-          </Link>
-        </ScrollReveal>
+      {/* ── MARQUEE STRIP ───────────────────────────────────────────── */}
+      <section className="border-y border-ink/10 overflow-hidden py-5 bg-paper-off">
+        <div className="marquee-track flex w-max gap-16 items-center">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <span key={i} className="nav-link text-[10px] text-ink/30 whitespace-nowrap shrink-0">
+              Trey May &nbsp;·&nbsp; Fashion Styling &nbsp;·&nbsp; Savannah College of Art and Design &nbsp;·&nbsp; SCAD Atlanta &nbsp;·&nbsp;
+            </span>
+          ))}
+        </div>
       </section>
+
+      {/* ── ABOUT / BIO ─────────────────────────────────────────────── */}
+      <section className="grid grid-cols-1 md:grid-cols-12 min-h-[85vh] bg-paper">
+        {/* Left: portrait */}
+        <div className="md:col-span-5 relative min-h-[50vh] md:min-h-0">
+          <Image
+            src="/profile-new.png"
+            alt="Trey May"
+            fill
+            unoptimized
+            sizes="(max-width: 768px) 100vw, 42vw"
+            className="object-cover object-top"
+          />
+        </div>
+
+        {/* Right: bio */}
+        <div className="md:col-span-7 flex flex-col justify-center px-8 md:px-14 py-16 md:py-20 border-l border-ink/10">
+          <ScrollReveal>
+            <p className="nav-link text-[9px] text-ink/40 mb-6">About</p>
+            <blockquote className="font-serif text-xl md:text-2xl lg:text-3xl text-ink leading-snug font-medium mb-8">
+              "Fashion is the key to the transformation of someone's appearance from unimaginative to mystical and inspired."
+            </blockquote>
+            <p className="font-sans text-ink/60 text-sm md:text-base leading-relaxed max-w-prose mb-10">
+              Trey May is a BFA student at the Savannah College of Art and Design (SCAD Atlanta), pursuing Fashion Design with an expected graduation of Spring 2029. His work lives at the intersection of styling, concept development, and world-building — with an avant-garde perspective that drives every project forward.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 nav-link text-[10px] text-ink border border-ink/20 hover:border-ink px-6 py-3 w-fit transition-colors duration-200"
+            >
+              Get in Touch <span aria-hidden>→</span>
+            </Link>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ── FOOTER ──────────────────────────────────────────────────── */}
+      <footer className="bg-paper-off border-t border-ink/10 px-6 md:px-10 py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <p className="nav-link text-[9px] text-ink/30">Trey May — Fashion Styling & Design</p>
+        <div className="flex gap-6">
+          <Link href="/styling" className="nav-link text-[9px] text-ink/30 hover:text-ink transition-colors">Styling</Link>
+          <Link href="/design" className="nav-link text-[9px] text-ink/30 hover:text-ink transition-colors">Design</Link>
+          <Link href="/contact" className="nav-link text-[9px] text-ink/30 hover:text-ink transition-colors">Contact</Link>
+        </div>
+        <p className="nav-link text-[9px] text-ink/20">© {new Date().getFullYear()}</p>
+      </footer>
     </>
   );
 }

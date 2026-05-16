@@ -6,7 +6,7 @@ import { CursorFollower } from "@/components/CursorFollower";
 
 const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-manrope",
   display: "swap",
 });
@@ -26,15 +26,15 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Trey May - Fashion Styling & Design",
+  title: "Trey May — Fashion Styling & Design",
   description:
-    "Fashion design and photography portfolio. Chic, mature, editorial.",
+    "Fashion design and styling portfolio. Chic, mature, editorial.",
   icons: {
-    icon: "/light-mode-logo.png",
+    icon: "/dark-mode-logo.png",
   },
   openGraph: {
-    title: "Trey May - Fashion Styling & Design",
-    description: "Fashion design and photography portfolio.",
+    title: "Trey May — Fashion Styling & Design",
+    description: "Fashion design and styling portfolio.",
   },
 };
 
@@ -48,10 +48,10 @@ export default function RootLayout({
       lang="en"
       className={`${manrope.variable} ${bodoni.variable} ${outfit.variable}`}
     >
-      <body className="font-sans min-h-screen bg-paper text-ink">
+      <body className="font-sans bg-paper text-ink">
         <CursorFollower />
         <Nav />
-        <main className="min-h-screen">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );
