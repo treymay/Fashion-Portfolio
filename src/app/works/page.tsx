@@ -96,14 +96,14 @@ export default function WorksPage() {
               <article className="project-card" tabIndex={0} role="article" aria-label={`${project.title} — ${project.category}, ${project.year}`}>
                 {/* Cover */}
                 <div style={{ background: project.coverBg, aspectRatio: "4/5", position: "relative", overflow: "hidden" }}>
-                  {project.images?.[project.images.length - 1] && (
+                  {(project.thumbnail ?? project.images?.[0]?.src) && (
                     <Image
-                      src={project.images[project.images.length - 1].src}
+                      src={project.thumbnail ?? project.images![0].src}
                       alt={project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover object-top"
-                      style={{ opacity: 0.9 }}
+                      className="object-cover object-center"
+                      style={{ opacity: 0.92 }}
                     />
                   )}
                   <span className={project.pillClass} style={{ position: "absolute", top: "1rem", left: "1rem", zIndex: 2 }}>{project.category}</span>

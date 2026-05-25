@@ -10,6 +10,8 @@ export type Project = {
   accentColor: string;
   pillClass: string;
   coverBg: string;
+  thumbnail?: string;
+  banner?: string;
   tags: string[];
   images?: { src: string; caption: string }[];
   concept?: string;
@@ -30,6 +32,8 @@ export const projects: Project[] = [
     accentColor: "#C41E3A",
     pillClass: "pill-orange",
     coverBg: "linear-gradient(135deg, #f5e8e0 0%, #e8c8b8 50%, #d4a090 100%)",
+    thumbnail: "/blood-tears/thumbnail.jpg",
+    banner: "/blood-tears/banner.jpg",
     tags: ["Brooch", "Copper", "Narrative", "2026"],
     images: [
       { src: "/blood-tears/page-1.png", caption: "Design Brief — the beginning of Blood & Tears" },
@@ -37,6 +41,7 @@ export const projects: Project[] = [
       { src: "/blood-tears/page-3.png", caption: "Sketches — different iterations of the same vivid vision" },
       { src: "/blood-tears/page-4.png", caption: "Process & Materials — fabrication techniques used" },
       { src: "/blood-tears/page-5.png", caption: "Progress — step by step, precision piercing to UV resin" },
+      { src: "/blood-tears/page-6.png", caption: "Final Product — Blood & Tears worn in the wild" },
     ],
     concept: "These tears are meant to symbolize a different kind of cry. This cry is of agony and pain over the loss of someone you were passionate about or desired. For me personally, I spent years crying over someone that I was in love with. While I'm okay now, I still feel that deep grief and remember all the suffering I had to endure while I saw them move on with their life with someone else. The color palette — blood red, amber gold, cream, and black — was pulled directly from that emotional weight. Pearls and ruby-red beads form the tears. The eye watches. It always watches.",
     process: "Because I had such a clear and vivid vision for this brooch, I wanted to simply create different iterations of the same concept — adjusting the number of eyelashes, the type of chains, the assortment of beads. Fabrication techniques included: Cold Connections (resin, wire-wrapping), Metalworking (precision piercing, doming, finishing), Soldering & Mechanisms (integrated hand-crafted hinge and catch), Surface Treatment (chemical & heat patination in red and black on copper), and Wire Working (custom structural eyelash fabrication). Materials: Brass and Copper sheet metal, Stainless steel and copper wire, Pearls and gemstone beads, Resin.",

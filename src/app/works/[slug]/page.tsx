@@ -43,14 +43,14 @@ export default async function ProjectDetailPage({
         }}
       >
         {/* Hero BG image (last project image as backdrop) */}
-        {project.images && project.images.length > 0 && (
+        {(project.banner ?? project.images?.[project.images.length - 1]?.src) && (
           <Image
-            src={project.images[project.images.length - 1].src}
+            src={project.banner ?? project.images![project.images!.length - 1].src}
             alt={project.title}
             fill
             sizes="100vw"
-            className="object-cover object-top"
-            style={{ opacity: 0.25 }}
+            className="object-cover object-center"
+            style={{ opacity: 0.32 }}
             priority
           />
         )}
