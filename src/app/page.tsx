@@ -227,10 +227,11 @@ export default function HomePage() {
           textAlign: "center",
           position: "relative",
           zIndex: 10,
+          width: "100%",
         }}
       >
         <ScrollReveal>
-          {/* Circle photo */}
+          {/* Circle photo — explicitly centered */}
           <div
             style={{
               width: "clamp(100px,16vw,180px)",
@@ -239,6 +240,8 @@ export default function HomePage() {
               overflow: "hidden",
               border: "3px solid var(--color-border)",
               marginBottom: "1.75rem",
+              marginLeft: "auto",
+              marginRight: "auto",
               position: "relative",
               flexShrink: 0,
             }}

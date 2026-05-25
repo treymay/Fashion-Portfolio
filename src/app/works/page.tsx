@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { projects } from "@/lib/projects";
 
-const allCategories = ["All", "Brooch", "Bracelet", "Earrings", "Ring", "Necklace", "Pendant"];
+const allCategories = ["All", "Brooch", "Bracelet", "Earrings", "Ring", "Necklace", "Pendant", "Collection"];
 
 export default function WorksPage() {
   const [active, setActive] = useState("All");

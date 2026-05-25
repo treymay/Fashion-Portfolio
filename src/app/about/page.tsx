@@ -48,13 +48,15 @@ export default function AboutPage() {
           gridTemplateColumns: "1fr",
           borderBottom: "1.5px solid var(--color-border)",
         }}
-        className="md:grid-cols-[380px_1fr]"
+        className="md:grid-cols-[260px_1fr]"
       >
-        {/* Portrait — vertical 4:5 */}
+        {/* Portrait — vertical 4:5, compact */}
         <div
           style={{
             borderRight: "1.5px solid var(--color-border)",
             borderBottom: "1.5px solid var(--color-border)",
+            display: "flex",
+            alignItems: "flex-start",
           }}
         >
           <div
@@ -63,6 +65,7 @@ export default function AboutPage() {
               width: "100%",
               aspectRatio: "4 / 5",
               overflow: "hidden",
+              maxHeight: "420px",
             }}
           >
             <Image
