@@ -13,7 +13,7 @@ const manrope = Manrope({
 
 const bodoni = Bodoni_Moda({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-bodoni",
   display: "swap",
 });
@@ -26,29 +26,25 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Trey May — Fashion Styling & Design",
+  title: "Elara Fine Jewelry — Graduate Portfolio",
   description:
-    "Fashion design and styling portfolio. Chic, mature, editorial.",
-  icons: {
-    icon: "/dark-mode-logo.png",
-  },
+    "Contemporary fine jewelry portfolio. Graduate-level metalwork, stone setting, and concept-driven design.",
+  icons: { icon: "/favicon.ico" },
   openGraph: {
-    title: "Trey May — Fashion Styling & Design",
-    description: "Fashion design and styling portfolio.",
+    title: "Elara Fine Jewelry — Graduate Portfolio",
+    description: "Contemporary fine jewelry portfolio.",
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
       className={`${manrope.variable} ${bodoni.variable} ${outfit.variable}`}
     >
-      <body className="font-sans bg-paper text-ink">
+      <body className="font-sans" style={{ backgroundColor: "var(--color-bg)", color: "var(--color-ink)" }}>
         <CursorFollower />
         <Nav />
         <main>{children}</main>

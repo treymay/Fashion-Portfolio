@@ -8,7 +8,7 @@ export function CursorFollower() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  const springConfig = { damping: 28, stiffness: 180 };
+  const springConfig = { damping: 30, stiffness: 200 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
@@ -28,12 +28,13 @@ export function CursorFollower() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed top-0 left-0 z-[100] w-5 h-5 rounded-full border border-ink/40 hidden md:block"
+      className="pointer-events-none fixed top-0 left-0 z-[100] w-4 h-4 rounded-full hidden md:block"
       style={{
         x: cursorXSpring,
         y: cursorYSpring,
         translateX: "-50%",
         translateY: "-50%",
+        border: "1px solid rgba(201,169,110,0.5)",
       }}
     />
   );
