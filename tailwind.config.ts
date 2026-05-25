@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        serif: ["var(--font-bodoni)", "Georgia", "serif"],
-        sans:  ["var(--font-manrope)", "system-ui", "sans-serif"],
+        serif:  ["var(--font-cormorant)", "Georgia", "serif"],
+        sans:   ["var(--font-manrope)", "system-ui", "sans-serif"],
         outfit: ["var(--font-outfit)", "system-ui", "sans-serif"],
       },
       colors: {

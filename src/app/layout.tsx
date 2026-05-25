@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Bodoni_Moda, Outfit } from "next/font/google";
+import { Manrope, Cormorant_Garamond, Outfit } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { CursorFollower } from "@/components/CursorFollower";
@@ -11,10 +11,11 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const bodoni = Bodoni_Moda({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-bodoni",
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
   display: "swap",
 });
 
@@ -43,7 +44,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${manrope.variable} ${bodoni.variable} ${outfit.variable}`}
+      className={`${manrope.variable} ${cormorant.variable} ${outfit.variable}`}
     >
       <body className="font-sans" style={{ backgroundColor: "var(--color-bg)", color: "var(--color-ink)" }}>
         <CursorFollower />
