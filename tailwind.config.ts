@@ -8,27 +8,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        bg:      "#0C0B09",
-        surface: "#141210",
-        ink: {
-          DEFAULT: "#F4EFE6",
-          muted:   "rgba(244,239,230,0.5)",
-          faint:   "rgba(244,239,230,0.15)",
-        },
-        gold: {
-          DEFAULT: "#C9A96E",
-          light:   "#E2C992",
-          dark:    "#9A7A45",
-        },
-        green:  "#1E3D2F",
-        rose:   "#C4846E",
-      },
       fontFamily: {
-        display: ["var(--font-bodoni)", "Didot", "Georgia", "serif"],
-        sans:    ["var(--font-manrope)", "system-ui", "sans-serif"],
-        serif:   ["var(--font-bodoni)", "Didot", "serif"],
-        label:   ["var(--font-outfit)", "system-ui", "sans-serif"],
+        serif: ["var(--font-bodoni)", "Georgia", "serif"],
+        sans:  ["var(--font-manrope)", "system-ui", "sans-serif"],
+        outfit: ["var(--font-outfit)", "system-ui", "sans-serif"],
+      },
+      colors: {
+        gold:    "#C9A96E",
+        orange:  "#D4610A",
+        pink:    "#C8347A",
+        green:   "#3D7A35",
+        yellow:  "#E8B820",
+        ink:     "#1C1714",
+        cream:   "#FDFCF9",
+        surface: "#F5F0E7",
       },
     },
   },

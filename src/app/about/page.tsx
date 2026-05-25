@@ -1,143 +1,115 @@
+"use client";
+import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 const skills = [
-  { label: "Lost-Wax Casting", detail: "Investment & centrifugal" },
-  { label: "Granulation", detail: "Etruscan technique" },
-  { label: "Stone Setting", detail: "Pavé, bezel, prong" },
-  { label: "Enamel Work", detail: "Champlevé & cloisonné" },
-  { label: "CAD / Rhino 3D", detail: "Parametric modeling" },
-  { label: "Electroforming", detail: "Precious metal deposition" },
-  { label: "Anodization", detail: "Titanium & niobium" },
-  { label: "Gemology", detail: "GIA certified" },
+  "Cold Connections & Wire-Wrapping",
+  "Metalworking & Precision Piercing",
+  "Soldering & Mechanism Fabrication",
+  "Chemical & Heat Patination",
+  "UV Resin & Surface Treatment",
+  "Wire Working & Wireworking",
+  "Sand Casting",
+  "CAD / Rhino 3D",
 ];
 
-const timeline = [
-  { year: "2025", event: "MFA Metalwork & Jewelry Design — SCAD Atlanta" },
-  { year: "2024", event: "Best in Category — Atlanta Jewelry Show" },
-  { year: "2024", event: "Thesis Exhibition — SCAD Fashion Show" },
-  { year: "2023", event: "Dean's Award for Technical Excellence" },
-  { year: "2022", event: "BFA Jewelry Design — SCAD Atlanta" },
-  { year: "2022", event: "Apprenticeship — Goldsmith Studio, Savannah GA" },
+const colorDots = [
+  "var(--color-orange)",
+  "var(--color-pink)",
+  "var(--color-green)",
+  "var(--color-yellow)",
 ];
 
 export default function AboutPage() {
   return (
     <div style={{ paddingTop: "var(--nav-h)", background: "var(--color-bg)", minHeight: "100vh" }}>
 
-      {/* ── PAGE HEADER ────────────────────────────────────────────────── */}
-      <header
-        style={{
-          padding: "4rem 2.5rem 3rem",
-          borderBottom: "1px solid var(--color-border)",
-          background: "var(--color-surface)",
-        }}
-        className="md:px-14"
-      >
+      {/* ── HEADER ────────────────────────────────────────────────────────── */}
+      <header style={{ padding: "4rem clamp(1.5rem,5vw,3.5rem) 3rem", borderBottom: "1.5px solid var(--color-border)", background: "var(--color-surface)" }}>
         <ScrollReveal>
-          <p className="label mb-3">The Designer</p>
-          <h1
-            className="font-serif font-medium"
-            style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "var(--color-ink)", letterSpacing: "-0.01em" }}
-          >
-            About
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
+            <div style={{ width: 20, height: 2, background: "var(--color-pink)" }} />
+            <p className="label" style={{ fontSize: "0.6rem", color: "var(--color-pink)" }}>About</p>
+          </div>
+          <h1 className="font-serif font-medium" style={{ fontSize: "clamp(2.5rem,5vw,4rem)", color: "var(--color-ink)", letterSpacing: "-0.01em" }}>
+            Trey May
           </h1>
+          <p className="font-sans font-light" style={{ fontSize: "0.875rem", color: "var(--color-ink-muted)", marginTop: "0.5rem" }}>
+            Jewelry Design · SCAD Savannah · BFA 2029
+          </p>
         </ScrollReveal>
       </header>
 
-      {/* ── PORTRAIT + BIO ───────────────────────────────────────────── */}
+      {/* ── PORTRAIT + BIO ────────────────────────────────────────────────── */}
       <section
-        style={{ borderBottom: "1px solid var(--color-border)" }}
-        className="grid grid-cols-1 md:grid-cols-2"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr",
+          borderBottom: "1.5px solid var(--color-border)",
+        }}
+        className="md:grid-cols-[420px_1fr]"
       >
-        {/* Portrait placeholder */}
-        <div
-          style={{
-            background: "linear-gradient(160deg, #141210 0%, #1E3D2F22 100%)",
-            minHeight: "55vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRight: "1px solid var(--color-border)",
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
-          <div
-            style={{
-              width: 160,
-              height: 160,
-              borderRadius: "50%",
-              border: "1px solid var(--color-gold)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <div
-              style={{
-                width: 110,
-                height: 110,
-                borderRadius: "50%",
-                background: "rgba(201,169,110,0.07)",
-                border: "1px solid var(--color-border-hover)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <p
-                className="font-serif"
-                style={{ fontSize: "1.4rem", color: "var(--color-gold)", fontWeight: 400, letterSpacing: "0.04em" }}
-              >
-                E
-              </p>
-            </div>
-          </div>
-          <div
-            style={{
-              position: "absolute",
-              bottom: "1.5rem",
-              left: "50%",
-              transform: "translateX(-50%)",
-              textAlign: "center",
-            }}
-          >
-            <p className="label" style={{ fontSize: "0.55rem" }}>Portrait placeholder</p>
+        {/* Portrait */}
+        <div style={{ position: "relative", minHeight: "520px", overflow: "hidden", borderRight: "1.5px solid var(--color-border)" }}>
+          <Image
+            src="/about/profile.png"
+            alt="Portrait of Trey May"
+            fill
+            sizes="(max-width: 768px) 100vw, 420px"
+            className="object-cover object-top"
+            priority
+          />
+          {/* Color accent strip at bottom */}
+          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 5, display: "flex" }}>
+            {colorDots.map((c, i) => (
+              <div key={i} style={{ flex: 1, background: c }} />
+            ))}
           </div>
         </div>
 
         {/* Bio */}
-        <div style={{ padding: "4rem 3rem" }} className="md:p-14 flex flex-col justify-center">
+        <div style={{ padding: "4rem clamp(2rem,5vw,3.5rem)", display: "flex", flexDirection: "column", justifyContent: "center" }}>
           <ScrollReveal>
-            <span className="gold-line mb-5" />
+            {/* Quote */}
             <blockquote
-              className="font-serif font-medium leading-snug mb-7"
-              style={{ fontSize: "clamp(1.15rem, 2.2vw, 1.6rem)", color: "var(--color-ink)" }}
+              className="font-serif"
+              style={{
+                fontSize: "clamp(1.25rem,2.2vw,1.6rem)",
+                color: "var(--color-ink)",
+                borderLeft: "3px solid var(--color-orange)",
+                paddingLeft: "1.25rem",
+                marginBottom: "2rem",
+                fontWeight: 400,
+                fontStyle: "italic",
+                lineHeight: 1.5,
+              }}
             >
-              "My practice begins in concept and ends in craft — the object is the argument."
+              "My goal is to bring color, light, and a sense of joy to a world that seems to be losing these qualities."
             </blockquote>
+
             <p
-              className="font-sans font-light leading-relaxed mb-5"
-              style={{ fontSize: "0.9rem", color: "var(--color-ink-muted)", maxWidth: "48ch" }}
+              className="font-sans font-light"
+              style={{ fontSize: "0.9rem", color: "var(--color-ink-muted)", lineHeight: 1.78, marginBottom: "2rem", maxWidth: "52ch" }}
             >
-              I am a graduate jewelry designer with an MFA in Metalwork & Jewelry Design from the Savannah College of Art and Design (SCAD Atlanta, 2025). My work fuses contemporary conceptual frameworks with traditional goldsmithing and silversmithing techniques that span centuries.
+              Hi, I'm Trey May. I am a BFA student at the Savannah College of Art and Design (SCAD), pursuing a degree in jewelry with an expected graduation date of Spring 2029. My work lives at the intersection of technical expertise, concept development, and world-building. Driven by an avant-garde perspective, my goal is to bring color, light, and a sense of joy to a world that seems to be losing these qualities. I strive to create ambitious, narrative-driven pieces that leave a lasting, positive impact on those who wear and experience them.
             </p>
-            <p
-              className="font-sans font-light leading-relaxed mb-8"
-              style={{ fontSize: "0.9rem", color: "var(--color-ink-muted)", maxWidth: "48ch" }}
-            >
-              I approach each piece as a small architecture — a structure that must bear the simultaneous weight of aesthetic beauty, material integrity, and conceptual meaning. My collections explore themes of geological time, ritual, memory, and the psychology of ornament.
-            </p>
-            <div className="flex gap-4 flex-wrap">
-              <Link href="/contact" className="btn-gold">
-                Collaborate <span aria-hidden>→</span>
-              </Link>
+
+            {/* Color dots */}
+            <div style={{ display: "flex", gap: "0.5rem", marginBottom: "2rem" }}>
+              {colorDots.map((c, i) => (
+                <div key={i} style={{ width: 10, height: 10, borderRadius: "50%", background: c }} />
+              ))}
+            </div>
+
+            <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap" }}>
+              <Link href="/contact" className="btn-dark">Get in Touch <span aria-hidden>→</span></Link>
               <a
-                href="/cv.pdf"
-                download
+                href="#"
+                onClick={(e) => e.preventDefault()}
                 className="btn-outline"
-                aria-label="Download CV as PDF"
+                aria-label="Download CV (coming soon)"
+                title="Coming soon"
               >
                 Download CV
               </a>
@@ -146,137 +118,86 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── SKILLS / TECHNIQUES ──────────────────────────────────────── */}
-      <section
-        style={{ padding: "5rem 2.5rem", borderBottom: "1px solid var(--color-border)" }}
-        className="md:px-14"
-      >
-        <ScrollReveal>
-          <p className="label mb-8" style={{ color: "var(--color-gold)" }}>Skills & Techniques</p>
-        </ScrollReveal>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-            gap: "1rem",
-          }}
-        >
-          {skills.map((skill, i) => (
-            <ScrollReveal key={skill.label} delay={i * 0.07}>
-              <div
-                style={{
-                  padding: "1.5rem",
-                  border: "1px solid var(--color-border)",
-                  background: "var(--color-surface)",
-                  transition: "border-color 0.3s ease",
-                }}
-                className="hover:border-[var(--color-gold)]"
-              >
-                <p
-                  className="font-sans font-medium mb-1"
-                  style={{ fontSize: "0.85rem", color: "var(--color-ink)" }}
-                >
-                  {skill.label}
-                </p>
-                <p className="label" style={{ fontSize: "0.55rem" }}>{skill.detail}</p>
-              </div>
-            </ScrollReveal>
-          ))}
+      {/* ── ARTIST STATEMENT ──────────────────────────────────────────────── */}
+      <section style={{ background: "var(--color-surface)", borderBottom: "1.5px solid var(--color-border)", padding: "5rem clamp(1.5rem,5vw,3.5rem)" }}>
+        <div style={{ maxWidth: "740px", margin: "0 auto" }}>
+          <ScrollReveal>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.5rem" }}>
+              <div style={{ width: 20, height: 2, background: "var(--color-green)" }} />
+              <p className="label" style={{ fontSize: "0.6rem", color: "var(--color-green)" }}>Artist Statement</p>
+            </div>
+            <h2 className="font-serif font-medium" style={{ fontSize: "clamp(1.6rem,2.8vw,2.2rem)", color: "var(--color-ink)", letterSpacing: "-0.01em", marginBottom: "1.5rem" }}>
+              I make jewelry because the world deserves more beauty in it.
+            </h2>
+            <div className="font-sans font-light" style={{ fontSize: "0.9rem", color: "var(--color-ink-muted)", lineHeight: 1.82, display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+              <p>
+                Every piece I make starts with a feeling — something I couldn't say out loud, couldn't explain in conversation, but needed to put somewhere real. Jewelry, to me, is the most intimate form of sculpture: it lives on the body, it moves with the person, it becomes part of how they move through the world. That proximity is what makes it powerful.
+              </p>
+              <p>
+                I'm drawn to work that has weight — emotional weight, conceptual weight — even when the physical object is delicate. Blood & Tears didn't start as a jewelry project; it started as grief. The medieval imagery in For An Endless Spring didn't start as an earring; it started as a question: what does armor look like when it's made for living rather than surviving? I build narratives first, then I figure out how to wear them.
+              </p>
+              <p>
+                Technically, I push myself to never take the easy path. Cold connections, hand-fabricated mechanisms, chemical patination, CAD modeling, sand casting — I want to know how to do it all so that no idea is out of reach. The concept always leads, and I build the skills to follow it.
+              </p>
+              <p>
+                Ultimately, I want my work to make people feel something. I want someone to put on a piece of mine and feel more like themselves — bolder, brighter, more present. That's the whole point. Joy is not a side effect of good jewelry; it's the entire goal.
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* ── EDUCATION & EXHIBITIONS TIMELINE ─────────────────────────── */}
-      <section
-        style={{ padding: "5rem 2.5rem", borderBottom: "1px solid var(--color-border)" }}
-        className="md:px-14"
-      >
+      {/* ── SKILLS ────────────────────────────────────────────────────────── */}
+      <section style={{ padding: "5rem clamp(1.5rem,5vw,3.5rem)", borderBottom: "1.5px solid var(--color-border)" }}>
         <ScrollReveal>
-          <p className="label mb-8" style={{ color: "var(--color-gold)" }}>Education & Awards</p>
-        </ScrollReveal>
-        <div style={{ maxWidth: "600px" }}>
-          {timeline.map((item, i) => (
-            <ScrollReveal key={i} delay={i * 0.08}>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "80px 1fr",
-                  gap: "1.5rem",
-                  paddingBottom: "2rem",
-                  marginBottom: "2rem",
-                  borderBottom: i < timeline.length - 1 ? "1px solid var(--color-border)" : "none",
-                  alignItems: "start",
-                }}
-              >
-                <span
-                  className="font-serif"
-                  style={{ fontSize: "1.1rem", color: "var(--color-gold)", fontWeight: 400 }}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "2rem" }}>
+            <div style={{ width: 20, height: 2, background: "var(--color-yellow)" }} />
+            <p className="label" style={{ fontSize: "0.6rem", color: "var(--color-ink-muted)" }}>Technical Expertise</p>
+          </div>
+          <h2 className="font-serif font-medium" style={{ fontSize: "clamp(1.4rem,2.5vw,1.8rem)", color: "var(--color-ink)", letterSpacing: "-0.01em", marginBottom: "1.75rem" }}>
+            Craft & Process
+          </h2>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.7rem" }}>
+            {skills.map((skill, i) => {
+              const accents = ["var(--color-orange)", "var(--color-pink)", "var(--color-green)", "var(--color-yellow)"];
+              const accent = accents[i % accents.length];
+              return (
+                <div
+                  key={skill}
+                  className="skill-tag"
+                  style={{
+                    borderLeft: `3px solid ${accent}`,
+                    paddingLeft: "0.85rem",
+                  }}
                 >
-                  {item.year}
-                </span>
-                <p
-                  className="font-sans"
-                  style={{ fontSize: "0.875rem", color: "var(--color-ink)", lineHeight: 1.5 }}
-                >
-                  {item.event}
-                </p>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
-
-      {/* ── STATEMENT ────────────────────────────────────────────────── */}
-      <section
-        style={{
-          padding: "5rem 2.5rem",
-          background: "var(--color-surface)",
-          textAlign: "center",
-          borderBottom: "1px solid var(--color-border)",
-        }}
-        className="md:px-14"
-      >
-        <ScrollReveal>
-          <p className="label mb-6">Artist Statement</p>
-          <blockquote
-            className="font-serif font-medium mx-auto"
-            style={{
-              fontSize: "clamp(1.1rem, 2vw, 1.5rem)",
-              color: "var(--color-ink)",
-              lineHeight: 1.55,
-              maxWidth: "62ch",
-            }}
-          >
-            "I make objects for the body because the body is the most intimate
-            space. To wear a thing is to carry its meaning — its material history,
-            its maker's intention, its own weight. My work asks: what is worth
-            carrying?"
-          </blockquote>
-          <span className="gold-line mt-8 mx-auto" />
+                  {skill}
+                </div>
+              );
+            })}
+          </div>
         </ScrollReveal>
       </section>
 
-      {/* ── CTA FOOTER ───────────────────────────────────────────────── */}
-      <footer
-        style={{
-          padding: "3rem 2.5rem",
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "1.5rem",
-          justifyContent: "space-between",
-          alignItems: "center",
-          background: "var(--color-bg)",
-        }}
-        className="md:px-14"
-      >
-        <div>
-          <p className="label mb-1" style={{ fontSize: "0.55rem" }}>Ready to collaborate?</p>
-          <Link href="/contact" className="font-serif" style={{ fontSize: "1.1rem", color: "var(--color-gold)" }}>
-            Get in touch →
-          </Link>
-        </div>
-        <Link href="/works" className="btn-outline">
-          View All Works
-        </Link>
+      {/* ── CALL TO ACTION ────────────────────────────────────────────────── */}
+      <section style={{ padding: "5rem clamp(1.5rem,5vw,3.5rem)", textAlign: "center", background: "var(--color-surface)" }}>
+        <ScrollReveal>
+          <h2 className="font-serif font-medium" style={{ fontSize: "clamp(1.8rem,3vw,2.5rem)", color: "var(--color-ink)", marginBottom: "1rem" }}>
+            Let's make something unforgettable.
+          </h2>
+          <p className="font-sans font-light" style={{ fontSize: "0.9rem", color: "var(--color-ink-muted)", maxWidth: "38ch", margin: "0 auto 2rem", lineHeight: 1.7 }}>
+            If you've got a story that needs wearing, I want to help you tell it.
+          </p>
+          <div style={{ display: "flex", justifyContent: "center", gap: "0.875rem", flexWrap: "wrap" }}>
+            <Link href="/contact" className="btn-orange">Contact Me <span aria-hidden>→</span></Link>
+            <Link href="/works" className="btn-outline">View Works</Link>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* ── FOOTER ────────────────────────────────────────────────────────── */}
+      <footer style={{ background: "var(--color-ink)", padding: "2rem clamp(1.5rem,5vw,2.5rem)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
+        <p className="label" style={{ fontSize: "0.55rem", color: "rgba(253,252,249,0.4)" }}>TREY MAY — SCAD Jewelry Design</p>
+        <Link href="/" className="label" style={{ fontSize: "0.55rem", color: "rgba(253,252,249,0.4)" }}>← Home</Link>
       </footer>
     </div>
   );

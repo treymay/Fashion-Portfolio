@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
@@ -7,7 +6,6 @@ export function CursorFollower() {
   const [mounted, setMounted] = useState(false);
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
-
   const springConfig = { damping: 30, stiffness: 200 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
@@ -30,11 +28,9 @@ export function CursorFollower() {
     <motion.div
       className="pointer-events-none fixed top-0 left-0 z-[100] w-4 h-4 rounded-full hidden md:block"
       style={{
-        x: cursorXSpring,
-        y: cursorYSpring,
-        translateX: "-50%",
-        translateY: "-50%",
-        border: "1px solid rgba(201,169,110,0.5)",
+        x: cursorXSpring, y: cursorYSpring,
+        translateX: "-50%", translateY: "-50%",
+        border: "1.5px solid rgba(212, 97, 10, 0.5)",
       }}
     />
   );

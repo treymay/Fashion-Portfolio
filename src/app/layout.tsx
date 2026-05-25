@@ -26,13 +26,13 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Elara Fine Jewelry — Graduate Portfolio",
+  title: "Trey May — Jewelry Design, SCAD",
   description:
-    "Contemporary fine jewelry portfolio. Graduate-level metalwork, stone setting, and concept-driven design.",
-  icons: { icon: "/favicon.ico" },
+    "Jewelry design portfolio by Trey May — BFA student at SCAD Savannah, class of 2029. Narrative-driven, concept-first, always ambitious.",
+  icons: { icon: "/logo.png" },
   openGraph: {
-    title: "Elara Fine Jewelry — Graduate Portfolio",
-    description: "Contemporary fine jewelry portfolio.",
+    title: "Trey May — Jewelry Design",
+    description: "Narrative-driven fine jewelry. SCAD BFA 2029.",
   },
 };
 
@@ -42,6 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${manrope.variable} ${bodoni.variable} ${outfit.variable}`}
     >
       <body className="font-sans" style={{ backgroundColor: "var(--color-bg)", color: "var(--color-ink)" }}>

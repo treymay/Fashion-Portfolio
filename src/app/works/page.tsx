@@ -1,11 +1,11 @@
 "use client";
-
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { projects } from "@/lib/projects";
 
-const allCategories = ["All", "Ring", "Necklace", "Bangle", "Earrings", "Brooch", "Pendant"];
+const allCategories = ["All", "Brooch", "Bracelet", "Earrings", "Ring", "Necklace", "Pendant"];
 
 export default function WorksPage() {
   const [active, setActive] = useState("All");
@@ -23,37 +23,39 @@ export default function WorksPage() {
 
   return (
     <div style={{ paddingTop: "var(--nav-h)", minHeight: "100vh", background: "var(--color-bg)" }}>
-      {/* ── PAGE HEADER ────────────────────────────────────────────────── */}
+
+      {/* ── PAGE HEADER ───────────────────────────────────────────────────── */}
       <header
         style={{
-          padding: "4rem 2.5rem 3rem",
-          borderBottom: "1px solid var(--color-border)",
+          padding: "4rem clamp(1.5rem, 5vw, 3.5rem) 3rem",
+          borderBottom: "1.5px solid var(--color-border)",
+          background: "var(--color-surface)",
         }}
-        className="md:px-14"
       >
         <ScrollReveal>
-          <p className="label mb-3">Portfolio</p>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
+            <div style={{ width: 20, height: 2, background: "var(--color-orange)" }} />
+            <p className="label" style={{ fontSize: "0.6rem", color: "var(--color-orange)" }}>Portfolio</p>
+          </div>
           <h1
             className="font-serif font-medium"
-            style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "var(--color-ink)", letterSpacing: "-0.01em" }}
+            style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "var(--color-ink)", letterSpacing: "-0.01em", marginBottom: "0.75rem" }}
           >
             Works
           </h1>
           <p
-            className="font-sans font-light mt-3"
-            style={{ fontSize: "0.875rem", color: "var(--color-ink-muted)", maxWidth: "44ch", lineHeight: 1.7 }}
+            className="font-sans font-light"
+            style={{ fontSize: "0.875rem", color: "var(--color-ink-muted)", maxWidth: "46ch", lineHeight: 1.7 }}
           >
-            A collection of concept-driven jewelry spanning metalwork, stone setting, enamel, and textile integration.
+            A growing collection of narrative-driven jewelry — every piece is a story worth wearing.
           </p>
         </ScrollReveal>
       </header>
 
-      {/* ── FILTERS + SEARCH ───────────────────────────────────────────── */}
+      {/* ── FILTERS ───────────────────────────────────────────────────────── */}
       <div
-        className="px-6 md:px-14 py-6 flex flex-col md:flex-row gap-4 md:items-center md:justify-between"
-        style={{ borderBottom: "1px solid var(--color-border)" }}
+        style={{ padding: "1.25rem clamp(1.5rem, 5vw, 3.5rem)", borderBottom: "1.5px solid var(--color-border)", display: "flex", flexWrap: "wrap", gap: "0.75rem", justifyContent: "space-between", alignItems: "center" }}
       >
-        {/* Category filter pills */}
         <fieldset className="flex flex-wrap gap-2 border-none p-0 m-0">
           <legend className="sr-only">Filter by category</legend>
           {allCategories.map((cat) => (
@@ -68,143 +70,53 @@ export default function WorksPage() {
             </button>
           ))}
         </fieldset>
-
-        {/* Search */}
-        <div style={{ position: "relative" }}>
-          <input
-            type="search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search pieces..."
-            className="form-field"
-            aria-label="Search projects"
-            style={{ width: "220px", paddingLeft: "0.25rem" }}
-          />
-        </div>
+        <input
+          type="search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search..."
+          className="form-field"
+          aria-label="Search projects"
+          style={{ width: "180px" }}
+        />
       </div>
 
-      {/* ── PROJECT GRID ───────────────────────────────────────────────── */}
+      {/* ── GRID ──────────────────────────────────────────────────────────── */}
       <div
-        className="px-6 md:px-14 py-10"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-          gap: "1.5rem",
-        }}
+        style={{ padding: "2.5rem clamp(1.5rem, 5vw, 3.5rem) 5rem", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "1.25rem" }}
       >
         {filtered.length === 0 && (
           <div className="col-span-full py-20 text-center">
-            <p className="label" style={{ fontSize: "0.7rem" }}>No pieces match your search.</p>
+            <p className="label" style={{ fontSize: "0.7rem" }}>Nothing found. Try a different search.</p>
           </div>
         )}
-
         {filtered.map((project, i) => (
-          <ScrollReveal key={project.slug} delay={i * 0.06}>
+          <ScrollReveal key={project.slug} delay={i * 0.08}>
             <Link href={`/works/${project.slug}`} className="block group">
-              <article
-                className="project-card overflow-hidden"
-                tabIndex={0}
-                role="article"
-                aria-label={`${project.title} — ${project.category}, ${project.year}`}
-              >
-                {/* Image area */}
-                <div
-                  style={{
-                    background: project.bg,
-                    aspectRatio: "4/5",
-                    position: "relative",
-                    overflow: "hidden",
-                  }}
-                >
-                  {/* Decorative circles */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "55%",
-                        height: "55%",
-                        borderRadius: "50%",
-                        border: `1px solid ${project.accentColor}28`,
-                      }}
+              <article className="project-card" tabIndex={0} role="article" aria-label={`${project.title} — ${project.category}, ${project.year}`}>
+                {/* Cover */}
+                <div style={{ background: project.coverBg, aspectRatio: "4/5", position: "relative", overflow: "hidden" }}>
+                  {project.images?.[project.images.length - 1] && (
+                    <Image
+                      src={project.images[project.images.length - 1].src}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover object-top"
+                      style={{ opacity: 0.9 }}
                     />
-                  </div>
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "28%",
-                        height: "28%",
-                        borderRadius: "50%",
-                        background: `${project.accentColor}14`,
-                        border: `1px solid ${project.accentColor}44`,
-                      }}
-                    />
-                  </div>
-
-                  {/* Category badge */}
-                  <span
-                    className="absolute top-4 left-4 label"
-                    style={{ fontSize: "0.55rem", color: project.accentColor, background: "rgba(12,11,9,0.75)", padding: "0.2rem 0.6rem" }}
-                  >
-                    {project.category}
-                  </span>
-
-                  {/* Year badge */}
-                  <span
-                    className="absolute top-4 right-4 label"
-                    style={{ fontSize: "0.55rem", color: "var(--color-ink-muted)" }}
-                  >
-                    {project.year}
-                  </span>
-
-                  {/* Hover overlay */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      background: "rgba(12,11,9,0.55)",
-                      opacity: 0,
-                      transition: "opacity 0.35s ease",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                    className="group-hover:opacity-100"
-                  >
-                    <span className="label" style={{ fontSize: "0.6rem", color: "var(--color-gold)", border: "1px solid var(--color-gold)", padding: "0.4rem 1rem" }}>
-                      View Project
-                    </span>
+                  )}
+                  <span className={project.pillClass} style={{ position: "absolute", top: "1rem", left: "1rem", zIndex: 2 }}>{project.category}</span>
+                  <span className="label" style={{ position: "absolute", top: "1rem", right: "1rem", fontSize: "0.55rem", color: "rgba(28,23,20,0.6)", zIndex: 2 }}>{project.year}</span>
+                  <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(28,23,20,0.45)", opacity: 0, transition: "opacity 0.3s ease", zIndex: 3 }} className="group-hover:opacity-100">
+                    <span className="label" style={{ fontSize: "0.6rem", color: "#fff", border: "1.5px solid #fff", padding: "0.4rem 1rem" }}>View Project</span>
                   </div>
                 </div>
-
-                {/* Card footer */}
-                <div className="px-5 py-4" style={{ borderTop: "1px solid var(--color-border)" }}>
-                  <p
-                    className="font-serif font-medium mb-1"
-                    style={{ fontSize: "1rem", color: "var(--color-ink)" }}
-                  >
-                    {project.title}
-                  </p>
-                  <p className="label" style={{ fontSize: "0.55rem", color: "var(--color-gold)", marginBottom: "0.35rem" }}>
-                    {project.materials.split(",")[0]}
-                  </p>
-                  <p className="font-sans" style={{ fontSize: "0.75rem", color: "var(--color-ink-muted)", lineHeight: 1.5 }}>
-                    {project.tagline}
-                  </p>
+                {/* Footer */}
+                <div style={{ padding: "1rem 1.25rem 1.25rem", borderTop: "1px solid var(--color-border)" }}>
+                  <p className="font-serif" style={{ fontSize: "1rem", color: "var(--color-ink)", fontWeight: 500, marginBottom: "0.3rem" }}>{project.title}</p>
+                  <p className="label" style={{ fontSize: "0.55rem", color: "var(--color-ink-muted)", marginBottom: "0.35rem" }}>{project.materials.split(",")[0]}</p>
+                  <p className="font-sans" style={{ fontSize: "0.78rem", color: "var(--color-ink-muted)", lineHeight: 1.5 }}>{project.tagline}</p>
                 </div>
               </article>
             </Link>
@@ -212,23 +124,10 @@ export default function WorksPage() {
         ))}
       </div>
 
-      {/* ── FOOTER ─────────────────────────────────────────────────────── */}
-      <footer
-        style={{
-          background: "var(--color-surface)",
-          borderTop: "1px solid var(--color-border)",
-          padding: "2.5rem",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <p className="label" style={{ fontSize: "0.55rem", color: "var(--color-ink-muted)" }}>
-          {filtered.length} piece{filtered.length !== 1 ? "s" : ""} shown
-        </p>
-        <Link href="/" className="label transition-colors duration-200" style={{ fontSize: "0.55rem", color: "var(--color-ink-muted)" }}>
-          ← Home
-        </Link>
+      {/* ── FOOTER ────────────────────────────────────────────────────────── */}
+      <footer style={{ background: "var(--color-ink)", padding: "2rem clamp(1.5rem, 5vw, 2.5rem)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
+        <p className="label" style={{ fontSize: "0.55rem", color: "rgba(253,252,249,0.45)" }}>{filtered.length} piece{filtered.length !== 1 ? "s" : ""}</p>
+        <Link href="/" className="label" style={{ fontSize: "0.55rem", color: "rgba(253,252,249,0.45)" }}>← Home</Link>
       </footer>
     </div>
   );
